@@ -7,4 +7,22 @@
 build/
 
 .flutter-plugins
-/Users/marcelopinheiro/flutterprojects/bitkoin/android/key.properties
+**/android/key.properties
+
+*.iml
+.idea/**/workspace.xml
+.idea/**/gradle.xml
+.idea/**/libraries
+.idea/**/tasks.xml
+.idea/**/usage.statistics.xml
+.idea/**/dictionaries
+.idea/**/shelf
+.idea/modules
+
+**/android/**/gradle-wrapper.jar
+**/android/.gradle
+**/android/captures/
+**/android/gradlew
+**/android/gradlew.bat
+**/android/local.properties
+**/android/**/GeneratedPluginRegistrant.java
