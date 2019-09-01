@@ -22,12 +22,12 @@ class CurrencyListState extends State <Currencylist>{
 
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
-			appBar: new AppBar(
-				title: new Text('Set currency'),
+    return Scaffold(
+			appBar: AppBar(
+				title: Text('Set currency'),
 			),
-			body: new Center(
-        child: new FutureBuilder(
+			body: Center(
+        child: FutureBuilder(
           future: DefaultAssetBundle
             .of(context)
             .loadString('JSON/currencies.json'),
@@ -35,13 +35,13 @@ class CurrencyListState extends State <Currencylist>{
             //Decode JSON
             var myData = json.decode(snapshot.data.toString());
 
-            return new ListView.builder(
+            return ListView.builder(
               itemCount: myData == null ? 0 : myData.length,
               itemBuilder: (BuildContext context, int index){
-                      return new Column(
+                      return Column(
 												children: <Widget>[
-													new ListTile(
-                        		title: new Text(myData[index]['currency']+ "-" + myData[index]['country']),
+													ListTile(
+                        		title: Text(myData[index]['currency']+ "-" + myData[index]['country']),
                          		onTap:(){
                                _savePrefs(myData[index]['currency'], myData[index]['country']); //saves default currency.
 
@@ -50,7 +50,7 @@ class CurrencyListState extends State <Currencylist>{
                             	Navigator.of(context).pop(currencyChosen);
                          		}
 													),
-													new Divider()
+													Divider()
 												]
 											);
               }

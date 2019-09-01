@@ -24,24 +24,25 @@ class RefreshRateListState extends State <RefreshRateList>{
 
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
-			appBar: new AppBar(
-				title: new Text('Refresh rate'),
-			),
-			body: new Center(
-        child: new ListView.builder(
+    return Scaffold(
+			appBar: 
+        AppBar(
+				  title: Text('Refresh rate'),
+			  ),
+			body: Center(
+        child: ListView.builder(
               	itemCount: 7,
               	itemBuilder: (BuildContext context, int index){
-                      return new Column(
+                      return Column(
 												children: <Widget>[
-													new ListTile(
-                        		title: new Text(list[index]),
+													 ListTile(
+                        		title: Text(list[index]),
                         		onTap:(){
 															_savePrefs(refreshRate[ list[index]]);
                             	Navigator.of(context).pop(refreshRate[ list[index] ] );
                 						}
 													),
-													new Divider()
+												  Divider()
 												],
 											);
 								}

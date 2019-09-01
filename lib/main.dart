@@ -9,18 +9,18 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'helpandfeedback.dart';
 
 
-void main() => runApp(new BitCoin());
+void main() => runApp(BitCoin());
 
 class BitCoin extends StatelessWidget {
 
 	@override
 	Widget build(BuildContext context) {
-		return new MaterialApp(
+		return MaterialApp(
 			title: 'BitKoin',
-			theme: new ThemeData(
+			theme: ThemeData(
 				primaryColor: Colors.blue.shade200
 			),
-			home: new BitCoinHome(),
+			home: BitCoinHome(),
 		);
 	}
 
@@ -28,7 +28,7 @@ class BitCoin extends StatelessWidget {
 
 class BitCoinHome extends StatefulWidget{
 	@override
-  BitCoinHomeState createState() => new BitCoinHomeState();
+  BitCoinHomeState createState() => BitCoinHomeState();
 }
 
 class BitCoinHomeState extends State <BitCoinHome> {
@@ -83,36 +83,36 @@ class BitCoinHomeState extends State <BitCoinHome> {
   }
 
 	Widget _buildDrawer(){
-				return new Drawer(
-					child: new ListView(
+				return Drawer(
+					child: ListView(
 						padding: const EdgeInsets.only(top: 0.0),
 						children: <Widget>[
-							new UserAccountsDrawerHeader(
-								accountName: new Text("BitKoin"),
+							UserAccountsDrawerHeader(
+								accountName: Text("BitKoin"),
 								accountEmail: null,
 								currentAccountPicture: 
-									new CircleAvatar(
+									CircleAvatar(
 										backgroundColor: Colors.brown,
 										//child: new Text(_bitCoinAvatar),
-										backgroundImage: new NetworkImage("https://upload.wikimedia.org/wikipedia/commons/5/50/Bitcoin.png"),
+										backgroundImage: NetworkImage("https://upload.wikimedia.org/wikipedia/commons/5/50/Bitcoin.png"),
 									),
 							),
 
-							new ListTile(
-								leading: new Icon(Icons.home),
-								title: new Text('Home'),
+							ListTile(
+								leading: Icon(Icons.home),
+								title: Text('Home'),
 								onTap: () => Navigator.of(context).pop() //closed drawer
 							),
 
-            	new ListTile(
-								leading: new Icon(Icons.attach_money),
-								title: new Text('Set currency'),
+            	ListTile(
+								leading: Icon(Icons.attach_money),
+								title: Text('Set currency'),
 								onTap: () async {
                 	Navigator.of(context).pop(); //closed drawer
                 
 									_defaultCurrency = await Navigator.push(
-             				 context,
-              				new MaterialPageRoute(builder: (context) => new Currencylist()),
+             				  context,
+              			  MaterialPageRoute(builder: (context) => new Currencylist()),
             			);
 
 									//assumes default value in case user did NOT choose a valid currency
@@ -125,8 +125,8 @@ class BitCoinHomeState extends State <BitCoinHome> {
 							),
 
 							new ListTile(
-								leading: new Icon(Icons.timer),
-								title: new Text('Set refresh rate'),
+								leading: Icon(Icons.timer),
+								title: Text('Set refresh rate'),
 								onTap: () async{
 									Navigator.of(context).pop(); //close drawer
 
@@ -155,11 +155,11 @@ class BitCoinHomeState extends State <BitCoinHome> {
 								}
 							),
 
-							new Divider(),
+							Divider(),
 
-							new ListTile(
-								leading: new Icon(Icons.help),
-								title: new Text('Help & feedback'),
+							ListTile(
+								leading: Icon(Icons.help),
+								title: Text('Help & feedback'),
 								onTap: () async {
                 	Navigator.of(context).pop(); //closed drawer
                 
@@ -195,27 +195,27 @@ class BitCoinHomeState extends State <BitCoinHome> {
 
 	@override
 	Widget build(BuildContext context) {
-		return new Scaffold(
+		return Scaffold(
 			drawer: _buildDrawer(), 
-			appBar: new AppBar(
-				title: new Text('BitKoin'),
+			appBar: AppBar(
+				title: Text('BitKoin'),
 			),
 			body: 
-				new Center(
-						child: new Column(
+				Center(
+						child: Column(
 							mainAxisAlignment: MainAxisAlignment.spaceEvenly,
 							children: 
 								[
-									new Column(
+									Column(
 										children: [
-											(_defaultCurrency==null) ? new Text( "" ) : new Text( '$_bitCoinValue', style: Theme.of(context).textTheme.display1),
-											(_defaultCurrency==null) ? new Text( "loading" ) : new Text('${_defaultCurrency.description}' ),
+											(_defaultCurrency==null) ? Text( "" ) : Text( '$_bitCoinValue', style: Theme.of(context).textTheme.display1),
+											(_defaultCurrency==null) ? Text( "loading" ) : Text('${_defaultCurrency.description}' ),
 										],
 									),	
-									new Column(
+									Column(
 										children: [
-											(_defaultCurrency==null) ? new Text( "" ) : new Text('Last updated:' ),
-											(_defaultCurrency==null) ? new Text( "" ) : new Text('$now' ),
+											(_defaultCurrency==null) ? Text( "" ) : Text('Last updated:' ),
+											(_defaultCurrency==null) ? Text( "" ) : Text('$now' ),
 									]
 									)
 								],
