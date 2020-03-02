@@ -5,7 +5,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class Currencylist extends StatefulWidget{
 	@override
-  CurrencyListState createState() => new CurrencyListState();
+  CurrencyListState createState() => CurrencyListState();
 }
 
 class CurrencyListState extends State <Currencylist>{
@@ -45,7 +45,7 @@ class CurrencyListState extends State <Currencylist>{
                          		onTap:(){
                                _savePrefs(myData[index]['currency'], myData[index]['country']); //saves default currency.
 
-                            	var currencyChosen = new Currency(myData[index]['currency'], myData[index]['country']); //prepares object that will be returned through Navigator.pop command
+                            	var currencyChosen = Currency(myData[index]['currency'], myData[index]['country']); //prepares object that will be returned through Navigator.pop command
 
                             	Navigator.of(context).pop(currencyChosen);
                          		}

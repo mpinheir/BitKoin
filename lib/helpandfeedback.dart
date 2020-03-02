@@ -19,21 +19,26 @@ class HelpAndFeedback extends StatelessWidget{
 										children: [
 											Text( "Application created by Marcelo Pinheiro" ),
                       FlatButton(
-                        onPressed: _launchURL,
-                        child: new Text('Twitter @mpinheir', style: TextStyle(color: Colors.blue)),
+                        onPressed: ()=> _launchURL( 'https://twitter.com/mpinheir' ),
+                        child: Text('Twitter @mpinheir', style: TextStyle(color: Colors.blue)),
                       ),
 										],
-									),	
-									Text("Bitcoin data feed by Coindesk", style: TextStyle(color: Colors.blue) ),
-                  Text("Github Repository" ),
+									),
+                  FlatButton(
+                    onPressed: ()=> _launchURL( 'https://www.coindesk.com/coindesk-api' ),
+                    child: Text("Data feed by Coindesk", style: TextStyle(color: Colors.blue)),
+                  ),
+                  FlatButton(
+                    onPressed: ()=> _launchURL( 'http://bit.ly/BitKoinGithub' ),
+                    child: Text("Bitkoin Github Repository", style: TextStyle(color: Colors.blue)),
+                  ),
 								],
 						),
 				),
     );
   }
 
-  _launchURL() async {
-   const url = 'https://twitter.com/mpinheir';
+  _launchURL( String url ) async {
    if (await canLaunch(url)) {
      await launch(url);
    } else {

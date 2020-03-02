@@ -37,7 +37,7 @@ class BitCoinHomeState extends State <BitCoinHome> {
 	var timeUpdated;
 	var updateRate;
 	var refreshRate;
-	var now = new DateTime.now();
+	var now = DateTime.now();
 	Timer timer;
 
 	_loadPrefs() async{
@@ -47,19 +47,19 @@ class BitCoinHomeState extends State <BitCoinHome> {
 		String coin = prefs.getString('coin') ?? "USD";
 		String coinDescription = prefs.getString('coinDescription') ?? "United States Dollar";
 		
-		_defaultCurrency = new Currency(coin, coinDescription);
+		_defaultCurrency = Currency(coin, coinDescription);
 
 		//if default refresh rate is not set then defaults to every 30 seconds.
 		updateRate = prefs.getInt('refreshRate') ?? 30;
 
-		refreshRate = new Duration(seconds:updateRate);
+		refreshRate = Duration(seconds:updateRate);
 	}
 
 
 	_loadData() async {
 
 		//date + time when value was updated.
-		now = new DateTime.now();
+		now = DateTime.now();
 
 		//loads shared preferences
 		SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -69,7 +69,7 @@ class BitCoinHomeState extends State <BitCoinHome> {
 		String coinDescription = prefs.getString('coinDescription') ?? "United States Dollar";
 		
 		//sets default currency global variable.
-		_defaultCurrency = new Currency(coin, coinDescription);
+		_defaultCurrency = Currency(coin, coinDescription);
 
 
 		//Builds COINDESK query and processes returned JSON feed to 
@@ -93,7 +93,7 @@ class BitCoinHomeState extends State <BitCoinHome> {
 								currentAccountPicture: 
 									CircleAvatar(
 										backgroundColor: Colors.brown,
-										//child: new Text(_bitCoinAvatar),
+										//child: Text(_bitCoinAvatar),
 										backgroundImage: NetworkImage("https://upload.wikimedia.org/wikipedia/commons/5/50/Bitcoin.png"),
 									),
 							),
@@ -112,7 +112,7 @@ class BitCoinHomeState extends State <BitCoinHome> {
                 
 									_defaultCurrency = await Navigator.push(
              				  context,
-              			  MaterialPageRoute(builder: (context) => new Currencylist()),
+              			  MaterialPageRoute(builder: (context) => Currencylist()),
             			);
 
 									//assumes default value in case user did NOT choose a valid currency
@@ -124,19 +124,19 @@ class BitCoinHomeState extends State <BitCoinHome> {
               	}
 							),
 
-							new ListTile(
+							ListTile(
 								leading: Icon(Icons.timer),
 								title: Text('Set refresh rate'),
 								onTap: () async{
 									Navigator.of(context).pop(); //close drawer
 
 									updateRate = await Navigator.of(context).push(
-										new PageRouteBuilder(
+										PageRouteBuilder(
 											pageBuilder: (BuildContext context, _, __) {
-												return new RefreshRateList();
+												return RefreshRateList();
 											},
 											transitionsBuilder: (_, Animation<double> animation, __, Widget child) {
-												return new FadeTransition(
+												return FadeTransition(
 													opacity: animation,
 													child: child
 												);
@@ -148,8 +148,8 @@ class BitCoinHomeState extends State <BitCoinHome> {
 									if (updateRate != null){
 										//Cancels current timer and sets new timer according to new refreshrate.
 										timer.cancel();
-										refreshRate = new Duration(seconds:updateRate);
-										timer = new Timer.periodic(refreshRate, (Timer t) => _loadData());
+										refreshRate = Duration(seconds:updateRate);
+										timer = Timer.periodic(refreshRate, (Timer t) => _loadData());
 									}
 									
 								}
@@ -165,7 +165,7 @@ class BitCoinHomeState extends State <BitCoinHome> {
                 
 									await Navigator.push(
              				 context,
-              				new MaterialPageRoute(builder: (context) => new HelpAndFeedback()),
+              				MaterialPageRoute(builder: (context) => HelpAndFeedback()),
             			);
 								}	
 							)
@@ -178,8 +178,8 @@ class BitCoinHomeState extends State <BitCoinHome> {
 		await _loadPrefs();
 		await _loadData();
 
-		refreshRate = new Duration(seconds:updateRate);
-		timer = new Timer.periodic(refreshRate, (Timer t) => _loadData());
+		refreshRate = Duration(seconds:updateRate);
+		timer = Timer.periodic(refreshRate, (Timer t) => _loadData());
 	}
 
 

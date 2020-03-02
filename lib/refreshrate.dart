@@ -4,7 +4,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class RefreshRateList extends StatefulWidget{
 	@override
-  RefreshRateListState createState() => new RefreshRateListState();
+  RefreshRateListState createState() => RefreshRateListState();
 }
 
 class RefreshRateListState extends State <RefreshRateList>{
