@@ -18,6 +18,7 @@ build/
 **/android/gradlew.bat
 **/android/local.properties
 **/android/**/GeneratedPluginRegistrant.java
+android/gradle/wrapper/gradle-wrapper.properties
 
 # iOS/XCode related
 **/ios/**/*.mode1v3

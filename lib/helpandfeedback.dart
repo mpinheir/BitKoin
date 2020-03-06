@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -9,32 +10,44 @@ class HelpAndFeedback extends StatelessWidget{
 			appBar: AppBar(
 				title: Text('Help & Feedback'),
 			),
-			body:
-        Center(
-						child: Column(
-							mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-							children: 
-								[
-									Column(
-										children: [
-											Text( "Application created by Marcelo Pinheiro" ),
-                      FlatButton(
-                        onPressed: ()=> _launchURL( 'https://twitter.com/mpinheir' ),
-                        child: Text('Twitter @mpinheir', style: TextStyle(color: Colors.blue)),
-                      ),
-										],
-									),
-                  FlatButton(
-                    onPressed: ()=> _launchURL( 'https://www.coindesk.com/coindesk-api' ),
-                    child: Text("Data feed by Coindesk", style: TextStyle(color: Colors.blue)),
-                  ),
-                  FlatButton(
-                    onPressed: ()=> _launchURL( 'http://bit.ly/BitKoinGithub' ),
-                    child: Text("Bitkoin Github Repository", style: TextStyle(color: Colors.blue)),
-                  ),
-								],
-						),
-				),
+      body: new Center(
+        child: RichText(
+          textAlign: TextAlign.center,
+          text: TextSpan(
+            children: [
+              TextSpan(
+                text: 'App by  ',
+                style: TextStyle(color: Colors.black),
+              ),
+              TextSpan(
+                text: 'Marcelo Pinheiro\n',
+                style: TextStyle(color: Colors.blue),
+                recognizer: TapGestureRecognizer()
+                  ..onTap = () { launch('https://twitter.com/mpinheir');
+                  },
+              ),
+              TextSpan(
+                text: 'Bitcoin data by ',
+                style: TextStyle(color: Colors.black),
+              ),
+              TextSpan(
+                text: 'Coindesk\n',
+                style: TextStyle(color: Colors.blue),
+                recognizer: TapGestureRecognizer()
+                  ..onTap = () { launch('https://www.coindesk.com/coindesk-api');
+                  },
+              ),
+              TextSpan(
+                text: 'Github app repository',
+                style: TextStyle(color: Colors.blue),
+                recognizer: TapGestureRecognizer()
+                  ..onTap = () { launch('https://github.com/mpinheir/BitKoin');
+                  },
+              ),
+            ],
+          ),
+        ),
+      ),
     );
   }
 
