@@ -6,48 +6,51 @@ class HelpAndFeedback extends StatelessWidget{
 	
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-			appBar: AppBar(
-				title: Text('Help & Feedback'),
-			),
-      body: new Center(
-        child: RichText(
-          textAlign: TextAlign.center,
-          text: TextSpan(
-            children: [
-              TextSpan(
-                text: 'App by   ',
-                style: TextStyle(color: Colors.black),
+    return MaterialApp(
+      home: Scaffold(
+        body: SafeArea(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              CircleAvatar(
+                radius: 50.0,
+                backgroundImage: AssetImage('images/marcelo.png'),
               ),
-              TextSpan(
-                text: 'Marcelo Pinheiro\n',
-                style: TextStyle(color: Colors.blue),
-                recognizer: TapGestureRecognizer()
-                  ..onTap = () { launch('https://twitter.com/mpinheir');
-                  },
+              Text('Marcelo Pinheiro',
+                style: TextStyle(
+                  fontFamily: 'Pacifico',
+                  fontSize: 40.0,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
-              TextSpan(
-                text: 'Bitcoin data by ',
-                style: TextStyle(color: Colors.black),
+              SizedBox(
+                height: 20.0,
+                width: 150.0,
+                child: Divider(
+                  color: Colors.blue,
+                ),
               ),
-              TextSpan(
-                text: 'Coindesk\n',
-                style: TextStyle(color: Colors.blue),
-                recognizer: TapGestureRecognizer()
-                  ..onTap = () { launch('https://www.coindesk.com/coindesk-api');
-                  },
-              ),
-              TextSpan(
-                text: 'Github app repository',
-                style: TextStyle(color: Colors.blue),
-                recognizer: TapGestureRecognizer()
-                  ..onTap = () { launch('https://github.com/mpinheir/BitKoin');
-                  },
-              ),
+              Card(
+                color: Colors.blue[200],
+                margin: EdgeInsets.symmetric(vertical: 10, horizontal: 25),
+                child: ListTile(
+                    leading: Icon(
+                      Icons.email,
+                    color: Colors.blue[800],),
+                    title: Text(
+                        'Follow on Twitter',
+                        style: TextStyle(
+                          fontSize: 20.0,
+                          color: Colors.blue[800  ]
+                        ),
+                    ),
+                  ),
+                ),
             ],
           ),
-        ),
-      ),
+        )
+      )
+
     );
   }
 
