@@ -16,7 +16,7 @@ class HelpAndFeedback extends StatelessWidget{
           text: TextSpan(
             children: [
               TextSpan(
-                text: 'App by  ',
+                text: 'App by   ',
                 style: TextStyle(color: Colors.black),
               ),
               TextSpan(
@@ -51,12 +51,6 @@ class HelpAndFeedback extends StatelessWidget{
     );
   }
 
-  _launchURL( String url ) async {
-   if (await canLaunch(url)) {
-     await launch(url);
-   } else {
-      throw 'Could not launch $url';
-    }
-  }
+
 }
 
