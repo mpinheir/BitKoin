@@ -6,8 +6,10 @@ class HelpAndFeedback extends StatelessWidget{
 	
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
+    return Scaffold(
+        appBar: AppBar(
+          title: Text('Help & Feedback'),
+        ),
         body: SafeArea(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -49,7 +51,6 @@ class HelpAndFeedback extends StatelessWidget{
             ],
           ),
         )
-      )
 
     );
   }
