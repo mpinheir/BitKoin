@@ -35,19 +35,39 @@ class HelpAndFeedback extends StatelessWidget{
               Card(
                 color: Colors.blue[200],
                 margin: EdgeInsets.symmetric(vertical: 10, horizontal: 25),
-                child: ListTile(
-                    leading: Icon(
-                      Icons.email,
-                    color: Colors.blue[800],),
+                child: Padding(
+                  padding: EdgeInsets.all(5.0),
+                  child: ListTile(
+                      leading:Image.asset('images/Twitter_Social_Icon_Circle_Color.png'),
+                      title: Text(
+                          'Follow on Twitter',
+                          style: TextStyle(
+                            fontSize: 20.0,
+                            color: Colors.blue[800  ]
+                          ),
+                      ),
+                      onTap: ()=> _launchURL(),
+                    ),
+                ),
+                ),
+              Card(
+                color: Colors.blue[200],
+                margin: EdgeInsets.symmetric(vertical: 10, horizontal: 25),
+                child: Padding(
+                  padding: EdgeInsets.all(5.0),
+                  child: ListTile(
+                    leading:Image.asset('images/github-icon.png'),
                     title: Text(
-                        'Follow on Twitter',
-                        style: TextStyle(
+                      'Source Code on Github',
+                      style: TextStyle(
                           fontSize: 20.0,
                           color: Colors.blue[800  ]
-                        ),
+                      ),
                     ),
+                    onTap: ()=> _launchURL(),
                   ),
                 ),
+              ),
             ],
           ),
         )
@@ -55,6 +75,14 @@ class HelpAndFeedback extends StatelessWidget{
     );
   }
 
+  _launchURL() async {
+    const url = 'https://twitter.com/mpinheir';
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
 
 }
 
