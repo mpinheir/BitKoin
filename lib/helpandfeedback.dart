@@ -46,7 +46,7 @@ class HelpAndFeedback extends StatelessWidget{
                             color: Colors.blue[800  ]
                           ),
                       ),
-                      onTap: ()=> _launchURL(),
+                      onTap: ()=> _launchURL('https://twitter.com/mpinheir'),
                     ),
                 ),
                 ),
@@ -64,7 +64,7 @@ class HelpAndFeedback extends StatelessWidget{
                           color: Colors.blue[800  ]
                       ),
                     ),
-                    onTap: ()=> _launchURL(),
+                    onTap: ()=> _launchURL('https://github.com/mpinheir/BitKoin'),
                   ),
                 ),
               ),
@@ -75,8 +75,7 @@ class HelpAndFeedback extends StatelessWidget{
     );
   }
 
-  _launchURL() async {
-    const url = 'https://twitter.com/mpinheir';
+  _launchURL( url ) async {
     if (await canLaunch(url)) {
       await launch(url);
     } else {
