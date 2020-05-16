@@ -1,4 +1,4 @@
-import 'package:flutter/gestures.dart';
+//import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -68,6 +68,24 @@ class HelpAndFeedback extends StatelessWidget{
                   ),
                 ),
               ),
+              Card(
+                color: Colors.blue[200],
+                margin: EdgeInsets.symmetric(vertical: 10, horizontal: 25),
+                child: Padding(
+                  padding: EdgeInsets.all(5.0),
+                  child: ListTile(
+                    leading:Image.asset('images/email.png'),
+                    title: Text(
+                      'info@pelware.com',
+                      style: TextStyle(
+                          fontSize: 20.0,
+                          color: Colors.blue[800  ]
+                      ),
+                    ),
+                    onTap: ()=> _launchEmail(),
+                  ),
+                ),
+              ),
             ],
           ),
         )
@@ -82,6 +100,15 @@ class HelpAndFeedback extends StatelessWidget{
       throw 'Could not launch $url';
     }
   }
+
+  _launchEmail() async {
+      var email = 'info@pelware.com?subject=help%20and%20feedback&body=<body>';
+      if (await canLaunch("mailto:$email")) {
+        await launch("mailto:$email");
+      } else {
+        throw 'Could not launch';
+      }
+    }
 
 }
 
