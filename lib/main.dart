@@ -84,7 +84,7 @@ class BitCoinHomeState extends State<BitCoinHome> {
             padding: const EdgeInsets.only(top: 0.0),
             children: <Widget>[
           UserAccountsDrawerHeader(
-            accountName: Text("BitKoin"),
+            accountName: Text("BitKoin (B-2.01)"),
             accountEmail: null,
             currentAccountPicture: CircleAvatar(
               backgroundColor: Colors.brown,

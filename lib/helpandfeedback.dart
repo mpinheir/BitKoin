@@ -86,6 +86,24 @@ class HelpAndFeedback extends StatelessWidget{
                   ),
                 ),
               ),
+                            Card(
+                color: Colors.blue[200],
+                margin: EdgeInsets.symmetric(vertical: 10, horizontal: 25),
+                child: Padding(
+                  padding: EdgeInsets.all(5.0),
+                  child: ListTile(
+                    leading:Image.asset('images/coindesk.png', height: 80.0, width: 52.0,),
+                    title: Text(
+                      'CoinDesk API',
+                      style: TextStyle(
+                          fontSize: 20.0,
+                          color: Colors.blue[800  ]
+                      ),
+                    ),
+                    onTap: ()=> _launchURL('https://www.coindesk.com/coindesk-api'),
+                  ),
+                ),
+              ),
             ],
           ),
         )
@@ -106,7 +124,7 @@ class HelpAndFeedback extends StatelessWidget{
       if (await canLaunch("mailto:$email")) {
         await launch("mailto:$email");
       } else {
-        throw 'Could not launch';
+        throw 'Could not send email';
       }
     }
 
